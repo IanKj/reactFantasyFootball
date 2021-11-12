@@ -3,9 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import About from './components/About'
+import Teams from './components/Teams'
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
 
 ReactDOM.render(
-  <App />,
+  <BrowserRouter>
+    <Routes>
+      <Route exact path='/' element={<Teams />} />
+      <Route path='about' element={<About />} />
+    </Routes>
+    <App />
+  </BrowserRouter>,
+
   document.getElementById('root')
 );
 

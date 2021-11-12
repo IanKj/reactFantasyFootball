@@ -27,3 +27,26 @@
     fetch('https://api.sleeper.app/v1/league/736382027170983936/matchups/7')
     .then(resp => (resp.json())
       .then(data => console.log(data)))
+
+
+NavBar 
+  About League
+  League selector
+    2021 redraft
+    2021 dynasty
+  Trades
+  Transactions
+  
+
+ideas
+  End of year draft grades
+    where each player was drafted vs where they ended up
+    update weekly?
+  Average Finish in the past
+  Tendency to roster certain players
+  Wins and losses vs opponent
+  Personal best scores
+  personal worst scores
+
+refactor code to make it dry
+  

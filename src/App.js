@@ -2,7 +2,6 @@ import './App.css';
 import React from 'react'
 import Teams from './components/Teams'
 import Nav from './components/Nav'
-
 function App() {
 
 
