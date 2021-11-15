@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import About from './components/About'
-import Teams from './components/Teams'
+import Matchups from './components/Matchups'
 import {
   BrowserRouter,
   Routes,
@@ -14,10 +14,10 @@ import {
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
-      <Route exact path='/' element={<Teams />} />
-      <Route path='about' element={<About />} />
+      <Route exact path='/' element={<App />} />
+      <Route path='/about' element={<About />} />
+      <Route path='/matchups' element={<Matchups />} />
     </Routes>
-    <App />
   </BrowserRouter>,
 
   document.getElementById('root')

@@ -5,10 +5,10 @@ import {
 
 function Nav() {
     return (
-        <div>
-            <p>This is my navbar</p>
+        <div className="nav-container">
             <Link to="/">Home</Link>
             <Link to="/about">About League</Link>
+            <Link to="/matchups">Matchups</Link>
         </div>
     )
 }

@@ -46,7 +46,14 @@ ideas
   Tendency to roster certain players
   Wins and losses vs opponent
   Personal best scores
-  personal worst scores
+  Personal worst scores
+  Average scores (compared to league average)
+  Scores above median
+  scores below median
 
-refactor code to make it dry
+  Most players injured
+  click on player for more info
+    who has owned him/activity history
+  calculate average rank of roster
+
   

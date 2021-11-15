@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react'
+import '../index.css'
+import Team from './Team'
 
 function Teams() {
     const [teams, setTeams] = useState([])
     const [nflPlayers, setNflPlayers] = useState({})
     const [sort, setSort] = useState('descending')
+    const [avgFpts, setAvgFpts] = useState(0)
+    const [avgFptsAgainst, setAvgFptsAgainst] = useState(0)
 
     async function getRosterInfo() {
         //pull all team info - players, roster_id, settings(points scored, etc....), starters
@@ -15,8 +19,18 @@ function Teams() {
             }))
         }
         const updatedData = await getTeamNames()
+        const avgPointsScored = updatedData.map(team => {
+            return team.settings.fpts
+        }).reduce((a, b) => a + b)
+        const avgPointsScoredAgainst = updatedData.map(team => {
+            return team.settings.fpts_against
+        }).reduce((a, b) => a + b)
         setTeams(updatedData)
+        setAvgFpts(avgPointsScored / updatedData.length)
+        setAvgFptsAgainst(avgPointsScoredAgainst / updatedData.length)
+
     }
+
     async function getNflPlayers() {
         //large file => each key matches 'player' from getRosterInfo, name is stored under 'full_name'
         const players = await fetch('./nflPlayers.json', {
@@ -33,7 +47,6 @@ function Teams() {
         getRosterInfo()
         getNflPlayers()
     }, [])
-
     function genDisplay(sortBy) {
         let display
         if (sortBy === 'ascending') {
@@ -57,46 +70,22 @@ function Teams() {
             })
         }
         return display.map(team => {
-            const { players, starters, display_name } = team
-            const bench = players.filter(player => !starters.includes(player))
-            const { wins, losses, fpts, fpts_against } = team.settings
-
             return (
-                <div>
-                    <h1>{display_name} ({wins}-{losses})</h1>
-                    <h3> Points Scored: {fpts} </h3>
-                    <h3>Points Against: {fpts_against} </h3>
-                    <h2> Roster </h2>
-                    <h3> Active: </h3>
-                    <ol>
-                        {starters.map(player => {
-                            //get name of player from nflPlayers
-                            //full_name doesn't exist for 
-                            const { position, first_name, last_name } = nflPlayers[player] || {}
-                            return <li>{player !== '0' ? `${position}) ${first_name} ${last_name}` : 'Empty'}</li>
-                        })}
-                    </ol>
-                    <h3> Bench: </h3>
-                    <ol>
-                        {bench.map(player => {
-                            const { position, first_name, last_name } = nflPlayers[player] || {}
-                            return <li>{player !== '0' ? `${position}) ${first_name} ${last_name}` : 'Empty'}</li>
-                        })}
-                    </ol>
-                </div>
+                <Team team={team} nflPlayers={nflPlayers} avgFpts={avgFpts} avgFptsAgainst={avgFptsAgainst} />
             )
         })
     }
 
     const sortOptions = [
         {
-            label: 'Losers',
-            value: 'ascending'
-        },
-        {
             label: 'Winners',
             value: 'descending'
         },
+        {
+            label: 'Losers',
+            value: 'ascending'
+        },
+
         {
             label: 'Points Scored Against',
             value: 'pointsScoredAgainst'
@@ -119,6 +108,7 @@ function Teams() {
     return (
         <div>
             {selector}
+            <h3>League Average Points Scored: {avgFpts}</h3>
             {genDisplay(sort)}
         </div>
     )
