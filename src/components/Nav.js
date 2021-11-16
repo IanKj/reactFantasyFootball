@@ -1,9 +1,12 @@
 import React from 'react'
+import Matchups from './Matchups'
 import {
-    Link
+    Link,
 } from "react-router-dom";
 
-function Nav() {
+function Nav(props) {
+    console.log('navprops', props)
+    const { teams, nflPlayers, avgFpts, avgFptsAgainst } = props
     return (
         <div className="nav-container">
             <Link to="/">Home</Link>

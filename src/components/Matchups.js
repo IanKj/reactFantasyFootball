@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import Nav from './Nav'
 
-function Matchups() {
+function Matchups(props) {
+    const { teams, nflPlayers, avgFpts, avgFptsAgainst } = props
     const [matchupWeeks, setMatchupWeeks] = useState([])
-
+    console.log(teams)
     async function getMatchupHistory() {
         const matchupArr = []
         const { week } = await fetch("https://api.sleeper.app/v1/state/nfl").then(resp => resp.json())
@@ -27,12 +27,11 @@ function Matchups() {
         return matchups
 
     })
-    console.log(matchupsDOM)
 
     return (
         <div>
-            <Nav />
             <h2>Matchups!</h2>
+
         </div>
     )
 }
@@ -45,4 +44,10 @@ export default Matchups
         find two matches with equal matchup_id
             if matchup_id matches and roster_id doesn't match
 
+    loop throuhg each week
+        loop through each 5 matchups that week
+
+
+    want a container with two divs that each have a team component
 */
+

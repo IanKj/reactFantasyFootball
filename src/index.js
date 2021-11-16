@@ -3,21 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import About from './components/About'
-import Matchups from './components/Matchups'
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render(
   <BrowserRouter>
-    <Routes>
-      <Route exact path='/' element={<App />} />
-      <Route path='/about' element={<About />} />
-      <Route path='/matchups' element={<Matchups />} />
-    </Routes>
+    <App />
   </BrowserRouter>,
 
   document.getElementById('root')
