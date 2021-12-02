@@ -1,53 +1,74 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import Matchup from './Matchup'
 
 function Matchups(props) {
-    const { teams, nflPlayers, avgFpts, avgFptsAgainst } = props
-    const [matchupWeeks, setMatchupWeeks] = useState([])
-    console.log(teams)
-    async function getMatchupHistory() {
-        const matchupArr = []
-        const { week } = await fetch("https://api.sleeper.app/v1/state/nfl").then(resp => resp.json())
-        for (let i = 1; i < week + 1; i++) {
-            const weekMatchups = await fetch(`https://api.sleeper.app/v1/league/736382027170983936/matchups/${i}`).then(resp => resp.json())
-            matchupArr.push({ weekMatchups, week: i })
-        }
-        setMatchupWeeks(matchupArr)
+    const { teams, nflPlayers, matchupWeeks } = props
+    console.log(matchupWeeks)
+    const [week, setWeek] = useState(matchupWeeks.length - 1)
 
+    function getUsername(teams, rosterID) {
+        const username = teams.filter(team => team.roster_id === rosterID)
+        return username[0].display_name
     }
 
-    useEffect(() => {
-        getMatchupHistory()
-    }, [])
-
-    const matchupsDOM = matchupWeeks.map(week => {
-        let matchups = []
+    function getMatchups(week) {
+        const matchups = []
         for (let i = 1; i < 6; i++) {
-            matchups.push(week.weekMatchups.filter(match => match.matchup_id === i))
+            matchups.push(week.filter(player => {
+                player.display_name = getUsername(teams, player.roster_id)
+                return player.matchup_id === i
+            }))
         }
         return matchups
+    }
 
+    const allMatchups = matchupWeeks.map(week => {
+        return getMatchups(week)
     })
 
-    return (
-        <div>
-            <h2>Matchups!</h2>
+    const genMatchupDisplay = (weekOfMatchups) => {
+        return weekOfMatchups.map(matchup => {
+            return (
+                <Matchup matchup={matchup} nflPlayers={nflPlayers} />
+            )
+        })
+    }
 
+    const selector =
+        <div>
+            <label htmlFor="sorter">Sort by: </label>
+            <select id="sorter" value={week} onChange={(e) => setWeek(e.target.value)}>
+                {allMatchups.map((week, index) => (
+                    <option value={index}>{`Week ${index + 1}`}</option>
+                ))}
+            </select >
+        </div >
+
+
+    // this will display all matchups
+    // const matchUpsDOM = allMatchups.map((week, index) => {
+    //     return (
+    //         <div>
+    //             <h3>Week {index + 1}</h3>
+    //             {week.map(matchup => {
+    //                 return (
+    //                     <div>
+    //                         <Matchup matchup={matchup} nflPlayers={nflPlayers} />
+    //                     </div>
+    //                 )
+    //             })}
+    //         </div>
+    //     )
+    // })
+
+    return (
+        <div className="allMatchups-container">
+            <h2>Matchups!</h2>
+            {selector}
+            {genMatchupDisplay(allMatchups[week])}
         </div>
     )
 }
 
 export default Matchups
-
-/* loop through mathchups Array
-    for each week matchup set
-        loop through each individual match
-        find two matches with equal matchup_id
-            if matchup_id matches and roster_id doesn't match
-
-    loop throuhg each week
-        loop through each 5 matchups that week
-
-
-    want a container with two divs that each have a team component
-*/
 

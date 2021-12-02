@@ -36,6 +36,7 @@ NavBar
     2021 dynasty
   Trades
   Transactions
+  Individual Stats    
   
 
 ideas

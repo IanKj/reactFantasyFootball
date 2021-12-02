@@ -8,12 +8,16 @@ import {
 
 import About from './components/About'
 import Matchups from './components/Matchups'
+import HeadToHead from './components/HeadToHead'
+import football from './football.webp'
+
 
 function App() {
   const [teams, setTeams] = useState([])
   const [nflPlayers, setNflPlayers] = useState({})
   const [avgFpts, setAvgFpts] = useState(0)
   const [avgFptsAgainst, setAvgFptsAgainst] = useState(0)
+  const [matchupWeeks, setMatchupWeeks] = useState([])
 
   async function getRosterInfo() {
     //pull all team info - players, roster_id, settings(points scored, etc....), starters
@@ -48,28 +52,51 @@ function App() {
     setNflPlayers(players)
   }
 
+  async function getMatchupHistory() {
+    const { week } = await fetch("https://api.sleeper.app/v1/state/nfl").then(resp => resp.json())
+    console.log('serving data for week', week)
+    const getAllWeekMatchups = async () => {
+      return Promise.all()
+    }
+    for (let i = 1; i < week + 1; i++) {
+      const weekMatchups = await fetch(`https://api.sleeper.app/v1/league/736382027170983936/matchups/${i}`).then(resp => resp.json())
+      setMatchupWeeks(prevMatchUps => [...prevMatchUps, weekMatchups])
+    }
+
+  }
+
   useEffect(() => {
     getRosterInfo()
     getNflPlayers()
+    getMatchupHistory()
   }, [])
 
   return (
 
     <div className="app-container">
       <Nav />
-      <h1>AK Redraft</h1>
+      <h1>AK Fantasy Football (only redraft stats for now...)</h1>
+      <img alt="football" src={football} />
       <Routes>
         <Route exact path='/' element={<Teams
           teams={teams}
           nflPlayers={nflPlayers}
           avgFpts={avgFpts}
           avgFptsAgainst={avgFptsAgainst} />} />
-        <Route path='/about' element={<About />} />
+
         <Route path='/matchups' element={<Matchups
           teams={teams}
           nflPlayers={nflPlayers}
           avgFpts={avgFpts}
-          avgFptsAgainst={avgFptsAgainst} />} />
+          avgFptsAgainst={avgFptsAgainst}
+          matchupWeeks={matchupWeeks} />} />
+
+        <Route path='/headtohead' element={<HeadToHead
+          teams={teams}
+          nflPlayers={nflPlayers}
+          matchupWeeks={matchupWeeks} />} />
+
+        <Route path='/about' element={<About />} />
       </Routes>
 
 

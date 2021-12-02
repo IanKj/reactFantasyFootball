@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import '../index.css'
 import Team from './Team'
 
 function Teams(props) {
     const { teams, nflPlayers, avgFpts, avgFptsAgainst } = props
+    console.log(teams)
     const [sort, setSort] = useState('descending')
 
     function genDisplay(sortBy) {
@@ -66,6 +67,7 @@ function Teams(props) {
 
     return (
         <div>
+            <h2>General Stats!</h2>
             {selector}
             <h3>League Average Points Scored: {avgFpts}</h3>
             {genDisplay(sort)}
