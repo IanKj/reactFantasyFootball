@@ -1,17 +1,20 @@
 import React, { useState } from 'react'
+
 import Matchup from './Matchup'
 
 function Matchups(props) {
     const { teams, nflPlayers, matchupWeeks } = props
-    console.log(matchupWeeks)
-    const [week, setWeek] = useState(matchupWeeks.length - 1)
+    const [week, setWeek] = useState(0)
 
     function getUsername(teams, rosterID) {
         const username = teams.filter(team => team.roster_id === rosterID)
         return username[0].display_name
     }
 
+
+    // THE BUG IS HERE...NOT DYNAMIC WITH PLAYOFFS AND NULL MATCHUP IDS
     function getMatchups(week) {
+        console.log(week)
         const matchups = []
         for (let i = 1; i < 6; i++) {
             matchups.push(week.filter(player => {
@@ -27,6 +30,7 @@ function Matchups(props) {
     })
 
     const genMatchupDisplay = (weekOfMatchups) => {
+        console.log(weekOfMatchups)
         return weekOfMatchups.map(matchup => {
             return (
                 <Matchup matchup={matchup} nflPlayers={nflPlayers} />
@@ -38,28 +42,16 @@ function Matchups(props) {
         <div>
             <label htmlFor="sorter">Sort by: </label>
             <select id="sorter" value={week} onChange={(e) => setWeek(e.target.value)}>
-                {allMatchups.map((week, index) => (
-                    <option value={index}>{`Week ${index + 1}`}</option>
-                ))}
+                {allMatchups.map((week, index) => {
+                    if (index < 14) {
+                        return <option value={index}>{`Week ${index + 1}`}</option>
+                    }
+                })}
+                <option>Playoffs Round 1</option>
             </select >
+
         </div >
 
-
-    // this will display all matchups
-    // const matchUpsDOM = allMatchups.map((week, index) => {
-    //     return (
-    //         <div>
-    //             <h3>Week {index + 1}</h3>
-    //             {week.map(matchup => {
-    //                 return (
-    //                     <div>
-    //                         <Matchup matchup={matchup} nflPlayers={nflPlayers} />
-    //                     </div>
-    //                 )
-    //             })}
-    //         </div>
-    //     )
-    // })
 
     return (
         <div className="allMatchups-container">

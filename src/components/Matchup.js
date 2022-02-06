@@ -1,11 +1,14 @@
 import React from 'react'
 
 function Matchup(props) {
+    console.log(props)
     const { matchup } = props
     const [player1, player2] = matchup
+    console.log(player1, player2)
     const player1Bench = player1.players.filter(player => !player1.starters.includes(player))
     const player2Bench = player2.players.filter(player => !player2.starters.includes(player))
     const nflPlayers = props.nflPlayers
+
     return (
         <div className="matchup-container">
 
@@ -49,8 +52,6 @@ function Matchup(props) {
                     })}
                 </ol>
             </div>
-
-
         </div>
     )
 }

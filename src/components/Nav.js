@@ -8,10 +8,12 @@ function Nav(props) {
     const { teams, nflPlayers, avgFpts, avgFptsAgainst } = props
     return (
         <div className="nav-container">
-            <Link to="/">Home</Link>
-            <Link to="/about">About League</Link>
-            <Link to="/matchups">Matchups</Link>
-            <Link to="/headtohead">Head to Head</Link>
+            <Link to="/reactFantasyFootball">Home</Link> <span>|</span>
+            <Link to="/about">About League</Link><span>|</span>
+            <Link to="/matchups">Matchups</Link><span>|</span>
+            <Link to="/headtohead">Head to Head</Link><span>|</span>
+            <Link to="/playoffs">Playoffs</Link>
+            {/* <Link to="/maxpointstotals">Max Points </Link> */}
         </div>
     )
 }

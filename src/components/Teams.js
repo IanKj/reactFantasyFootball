@@ -4,7 +4,6 @@ import Team from './Team'
 
 function Teams(props) {
     const { teams, nflPlayers, avgFpts, avgFptsAgainst } = props
-    console.log(teams)
     const [sort, setSort] = useState('descending')
 
     function genDisplay(sortBy) {
@@ -29,9 +28,9 @@ function Teams(props) {
                 return b.settings.fpts_against - a.settings.fpts_against
             })
         }
-        return display.map(team => {
+        return display.map((team, index) => {
             return (
-                <Team team={team} nflPlayers={nflPlayers} avgFpts={avgFpts} avgFptsAgainst={avgFptsAgainst} />
+                <Team key={index} team={team} nflPlayers={nflPlayers} avgFpts={avgFpts} avgFptsAgainst={avgFptsAgainst} />
             )
         })
     }
@@ -66,7 +65,7 @@ function Teams(props) {
         </div >
 
     return (
-        <div>
+        <div className='teams-container'>
             <h2>General Stats!</h2>
             {selector}
             <h3>League Average Points Scored: {avgFpts}</h3>

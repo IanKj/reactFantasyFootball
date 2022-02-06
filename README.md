@@ -56,5 +56,34 @@ ideas
   click on player for more info
     who has owned him/activity history
   calculate average rank of roster
+  Playoffs
+  Leaderboards page
+    total points scored
+    total wins
+    total losses
+    total roster changes
+    
 
   
+TO DO
+
+determine empty bench spots
+  => display as empty
+
+troubleshoot matchups for dynasty
+matchups playoffs
+head to head
+playoffs
+max points
+
+
+
+head to head total wins versus opponent
+
+create an array for headToHead matchups to be placed
+
+map through every single weekr
+  grab playerOne matchup, compare it to the rest of the results
+    is the matchup_ID the same?
+      if it is, check if the opponents roster_id === playerTwo
+   
