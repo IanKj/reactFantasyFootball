@@ -9,9 +9,10 @@ import {
 import About from './components/About'
 import Matchups from './components/Matchups'
 import HeadToHead from './components/HeadToHead'
+import DraftGrades from './components/DraftGrades';
 import Playoffs from './components/Playoffs'
-import football from './football.webp'
 import MaxPointTotals from './components/MaxPointTotals';
+import football from './football.webp'
 
 
 function App() {
@@ -20,7 +21,6 @@ function App() {
   const [avgFpts, setAvgFpts] = useState(0)
   const [avgFptsAgainst, setAvgFptsAgainst] = useState(0)
   const [matchupWeeks, setMatchupWeeks] = useState([])
-  console.log(matchupWeeks)
 
   async function getRosterInfo() {
     //pull all team info - players, roster_id, settings(points scored, etc....), starters
@@ -52,6 +52,7 @@ function App() {
       }
     })
       .then(resp => resp.json())
+    console.log(players)
     setNflPlayers(players)
   }
 
@@ -81,7 +82,7 @@ function App() {
     <div className="app-container">
       <Nav />
       <h1>AK Fantasy Football (only dynasty stats for now...)</h1>
-      <img alt="football" src={football} />
+      <img className="banner-image" alt="football" src={football} />
       <Routes>
         <Route exact path='/reactFantasyFootball' element={<Teams
           teams={teams}
@@ -106,7 +107,7 @@ function App() {
 
         <Route path='/about' element={<About />} />
 
-        <Route path='/playoffs' element={<Playoffs
+        <Route path='/draftGrades' element={<DraftGrades
           teams={teams}
           nflPlayers={nflPlayers}
           matchupWeeks={matchupWeeks}

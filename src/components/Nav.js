@@ -12,7 +12,7 @@ function Nav(props) {
             <Link to="/about">About League</Link><span>|</span>
             <Link to="/matchups">Matchups</Link><span>|</span>
             <Link to="/headtohead">Head to Head</Link><span>|</span>
-            <Link to="/playoffs">Playoffs</Link>
+            <Link to="/draftGrades">Draft Grades</Link>
             {/* <Link to="/maxpointstotals">Max Points </Link> */}
         </div>
     )

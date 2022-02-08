@@ -16,7 +16,7 @@ body {
     text-align:center;
 }
 
-img {
+.banner-image {
     width: 100px;
 }
 .roster-container {
@@ -78,8 +78,23 @@ a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
+
+.draft-grades-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.draft-grades-container img {
+    margin-bottom: 20px;
+    border: 5px solid black;
+    border-style:inset;
+    border-radius:5px;
+    height: 540px;
+    width: 625px;
+}
+
+
 
 @media (max-width: 420px){
     .app-container {
@@ -106,5 +121,25 @@ a:hover {
    }
     a {
         font-size: .75rem;
+    }
+}
+
+@media (max-width: 670px){
+    .draft-grades-container img {
+        display: block;
+        margin-bottom: 10px;
+        border: 5px solid black;
+        border-style:inset;
+        border-radius:5px;
+        width: 95vw;
+    }
+}
+
+@media (min-width: 1300px){
+    .draft-grades-container {
+        max-width: 1300px;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap:wrap;
     }
 }
