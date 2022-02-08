@@ -1,23 +1,33 @@
 {
   "files": {
     "main.css": "/reactFantasyFootball/static/css/main.460dac4f.chunk.css",
-    "main.js": "/reactFantasyFootball/static/js/main.1c449510.chunk.js",
-    "main.js.map": "/reactFantasyFootball/static/js/main.1c449510.chunk.js.map",
-    "runtime-main.js": "/reactFantasyFootball/static/js/runtime-main.ad3169a1.js",
-    "runtime-main.js.map": "/reactFantasyFootball/static/js/runtime-main.ad3169a1.js.map",
+    "main.js": "/reactFantasyFootball/static/js/main.7016f1d8.chunk.js",
+    "main.js.map": "/reactFantasyFootball/static/js/main.7016f1d8.chunk.js.map",
+    "runtime-main.js": "/reactFantasyFootball/static/js/runtime-main.a2e4f1db.js",
+    "runtime-main.js.map": "/reactFantasyFootball/static/js/runtime-main.a2e4f1db.js.map",
     "static/js/2.f4e6c5d4.chunk.js": "/reactFantasyFootball/static/js/2.f4e6c5d4.chunk.js",
     "static/js/2.f4e6c5d4.chunk.js.map": "/reactFantasyFootball/static/js/2.f4e6c5d4.chunk.js.map",
-    "static/js/3.8d40545d.chunk.js": "/reactFantasyFootball/static/js/3.8d40545d.chunk.js",
-    "static/js/3.8d40545d.chunk.js.map": "/reactFantasyFootball/static/js/3.8d40545d.chunk.js.map",
+    "static/js/3.97cf85e2.chunk.js": "/reactFantasyFootball/static/js/3.97cf85e2.chunk.js",
+    "static/js/3.97cf85e2.chunk.js.map": "/reactFantasyFootball/static/js/3.97cf85e2.chunk.js.map",
     "index.html": "/reactFantasyFootball/index.html",
     "static/css/main.460dac4f.chunk.css.map": "/reactFantasyFootball/static/css/main.460dac4f.chunk.css.map",
     "static/js/2.f4e6c5d4.chunk.js.LICENSE.txt": "/reactFantasyFootball/static/js/2.f4e6c5d4.chunk.js.LICENSE.txt",
+    "static/media/1.png": "/reactFantasyFootball/static/media/1.b36eafcf.png",
+    "static/media/10.png": "/reactFantasyFootball/static/media/10.a3b18b57.png",
+    "static/media/2.png": "/reactFantasyFootball/static/media/2.e0830f8e.png",
+    "static/media/3.png": "/reactFantasyFootball/static/media/3.c1001cd4.png",
+    "static/media/4.png": "/reactFantasyFootball/static/media/4.34e24b82.png",
+    "static/media/5.png": "/reactFantasyFootball/static/media/5.246a2a1f.png",
+    "static/media/6.png": "/reactFantasyFootball/static/media/6.99abc8b7.png",
+    "static/media/7.png": "/reactFantasyFootball/static/media/7.c2c31ed4.png",
+    "static/media/8.png": "/reactFantasyFootball/static/media/8.9e49572d.png",
+    "static/media/9.png": "/reactFantasyFootball/static/media/9.decaa3e6.png",
     "static/media/football.b7968ad0.webp": "/reactFantasyFootball/static/media/football.b7968ad0.webp"
   },
   "entrypoints": [
-    "static/js/runtime-main.ad3169a1.js",
+    "static/js/runtime-main.a2e4f1db.js",
     "static/js/2.f4e6c5d4.chunk.js",
     "static/css/main.460dac4f.chunk.css",
-    "static/js/main.1c449510.chunk.js"
+    "static/js/main.7016f1d8.chunk.js"
   ]
 }
